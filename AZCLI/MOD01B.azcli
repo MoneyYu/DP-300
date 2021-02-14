@@ -1,0 +1,25 @@
+
+$group = "DP300-02140104"
+$vnet  = "lab01atrt"
+$subnet = "mi"
+$username = "demouser"
+$password = "Azuredemo2020"
+
+$subnetId=$(az network vnet subnet list --subscription "11321b33-1608-46d8-8a51-5d32cdd1b38a" --resource-group $group --vnet-name $vnet --query "[?name=='mi'].id" --output tsv)
+
+az network vnet subnet update `
+  --resource-group $group `
+  --name $subnet `
+  --vnet-name $vnet `
+  --delegations Microsoft.Sql/managedInstances
+
+az sql mi create --admin-password $password `
+                 --admin-user $username     `
+                 --name lab01b              `
+                 --resource-group $group    `
+                 --capacity 8               `
+                 --storage 32GB             `
+                 --edition GeneralPurpose   `
+                 --family Gen5              `
+                 --subnet $subnet `
+                 --vnet-name $vnet
