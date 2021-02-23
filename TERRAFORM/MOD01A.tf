@@ -123,7 +123,7 @@ resource "azurerm_mssql_virtual_machine" "lab01a" {
   sql_license_type                 = "PAYG"
   r_services_enabled               = true
   sql_connectivity_port            = 1433
-  sql_connectivity_type            = "PRIVATE"
+  sql_connectivity_type            = "PUBLIC"
   sql_connectivity_update_username = local.user_name
   sql_connectivity_update_password = local.user_passowrd
 
