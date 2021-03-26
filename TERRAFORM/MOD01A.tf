@@ -89,29 +89,56 @@ resource "azurerm_network_interface_security_group_association" "lab01a" {
   network_security_group_id = azurerm_network_security_group.lab01a.id
 }
 
-resource "azurerm_windows_virtual_machine" "lab01a" {
+resource "azurerm_virtual_machine" "lab01a" {
   name                  = lower(replace(local.lab01a_name_with_postfix, "-", ""))
   location              = azurerm_resource_group.group.location
   resource_group_name   = azurerm_resource_group.group.name
   network_interface_ids = [azurerm_network_interface.lab01a.id]
-  size                  = "Standard_B4ms"
+  vm_size               = "Standard_B4ms"
 
-  os_disk {
-    name                 = lower(replace(local.lab01a_name_with_postfix, "-", ""))
-    caching              = "ReadWrite"
-    storage_account_type = "Premium_LRS"
+  os_profile {
+    computer_name  = local.lab01a_name
+    admin_username = local.user_name
+    admin_password = local.user_passowrd
   }
 
-  source_image_reference {
+  storage_os_disk {
+    name              = lower(replace(local.lab01a_name_with_postfix, "-", ""))
+    caching           = "ReadWrite"
+    create_option     = "FromImage"
+    managed_disk_type = "Premium_LRS"
+  }
+
+  storage_data_disk {
+    name              = "${lower(replace(local.lab01a_name_with_postfix, "-", ""))}Data"
+    caching           = "ReadOnly"
+    disk_size_gb      = 1023
+    lun               = 0
+    managed_disk_type = "Premium_LRS"
+    create_option     = "Empty"
+  }
+
+  storage_data_disk {
+    name              = "${lower(replace(local.lab01a_name_with_postfix, "-", ""))}Log"
+    caching           = "None"
+    disk_size_gb      = 1023
+    lun               = 1
+    managed_disk_type = "Premium_LRS"
+    create_option     = "Empty"
+  }
+
+  storage_image_reference {
     publisher = "MicrosoftSQLServer"
     offer     = "sql2019-ws2019"
     sku       = "SQLDEV"
     version   = "latest"
   }
 
-  computer_name  = local.lab01a_name
-  admin_username = local.user_name
-  admin_password = local.user_passowrd
+  os_profile_windows_config {
+    provision_vm_agent        = true
+    enable_automatic_upgrades = true
+    timezone                  = "Taipei Standard Time"
+  }
 
   tags = {
     environment = local.group_name
@@ -119,7 +146,7 @@ resource "azurerm_windows_virtual_machine" "lab01a" {
 }
 
 resource "azurerm_mssql_virtual_machine" "lab01a" {
-  virtual_machine_id               = azurerm_windows_virtual_machine.lab01a.id
+  virtual_machine_id               = azurerm_virtual_machine.lab01a.id
   sql_license_type                 = "PAYG"
   r_services_enabled               = true
   sql_connectivity_port            = 1433
@@ -131,5 +158,20 @@ resource "azurerm_mssql_virtual_machine" "lab01a" {
     day_of_week                            = "Sunday"
     maintenance_window_duration_in_minutes = 60
     maintenance_window_starting_hour       = 2
+  }
+
+  storage_configuration {
+    disk_type             = "NEW"
+    storage_workload_type = "OLTP"
+
+    data_settings {
+      default_file_path = "F:\\data"
+      luns              = [0]
+    }
+
+    log_settings {
+      default_file_path = "G:\\log"
+      luns              = [1]
+    }
   }
 }

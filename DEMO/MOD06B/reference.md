@@ -1,0 +1,1 @@
+https://docs.microsoft.com/zh-tw/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server?view=sql-server-ver15
