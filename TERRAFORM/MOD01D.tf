@@ -5,18 +5,17 @@ resource "azurerm_mssql_elasticpool" "lab01d" {
   location            = azurerm_resource_group.group.location
   server_name         = azurerm_sql_server.lab01.name
   license_type        = "BasePrice"
-  max_size_gb         = 756
+  max_size_gb         = 100
 
   sku {
-    name     = "GP_Gen5"
-    tier     = "GeneralPurpose"
-    family   = "Gen5"
-    capacity = 4
+    name     = "StandardPool"
+    tier     = "Standard"
+    capacity = 100
   }
 
   per_database_settings {
-    min_capacity = 0.25
-    max_capacity = 4
+    min_capacity = 0
+    max_capacity = 100
   }
 
   tags = {

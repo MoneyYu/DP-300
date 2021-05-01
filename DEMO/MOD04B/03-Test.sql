@@ -19,7 +19,7 @@ GO
 EXEC dbo.proc_1 0;
 GO 20
 
--- Observe execution plan, logical read should larger than test 2
+-- Observe execution plan, logical read (average) should larger than test 2
 
 ------- Test 4 - Force Plan
 UPDATE dbo.db_store

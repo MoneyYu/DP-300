@@ -1,6 +1,6 @@
 ## MOD-01-F-POSTGRESQL
 resource "azurerm_postgresql_server" "lab01f" {
-  name                = lower(replace(local.lab01f_name_with_postfix, "-", ""))
+  name                = lower(local.lab01f_name_with_postfix)
   location            = azurerm_resource_group.group.location
   resource_group_name = azurerm_resource_group.group.name
 
@@ -13,12 +13,12 @@ resource "azurerm_postgresql_server" "lab01f" {
 
   administrator_login          = local.user_name
   administrator_login_password = local.user_passowrd
-  version                      = "9.5"
+  version                      = "11"
   ssl_enforcement_enabled      = true
 }
 
 resource "azurerm_postgresql_database" "lab01f" {
-  name                = lower(replace(local.lab01f_name_with_postfix, "-", ""))
+  name                = lower(local.lab01f_name_with_postfix)
   resource_group_name = azurerm_resource_group.group.name
   server_name         = azurerm_postgresql_server.lab01f.name
   charset             = "UTF8"

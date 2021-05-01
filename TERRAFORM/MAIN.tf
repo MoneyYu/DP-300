@@ -15,10 +15,15 @@ provider "azurerm" {
   # Use Azure CLI to authencation
 }
 
+variable "randomSeed" {
+  type        = string
+  description = "The seed of the random name."
+}
+
 locals {
-  group_name               = "DP300-${formatdate("MMDDHHmm", timestamp())}"
+  group_name               = "DP300-${var.randomSeed}"
   location                 = "southeastasia"
-  random_name              = random_string.rid.result
+  random_name              = var.randomSeed
   lab01_name               = "LAB01"
   lab01a_name              = "LAB01A"
   lab01c_name              = "LAB01C"

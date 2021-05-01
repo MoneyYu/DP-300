@@ -2,7 +2,7 @@
 resource "azurerm_mssql_database" "lab01c" {
   name         = lower(replace(local.lab01c_name_with_postfix, "-", ""))
   server_id    = azurerm_sql_server.lab01.id
-  sku_name     = "GP_Gen5_2"
+  sku_name     = "S1"
   license_type = "BasePrice"
 
   extended_auditing_policy {
