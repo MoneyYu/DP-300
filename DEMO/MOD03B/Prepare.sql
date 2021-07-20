@@ -1,3 +1,5 @@
+-- Ownership chain
+
 USE AdventureWorks2019;
 GO
 CREATE LOGIN [DP300User1] WITH PASSWORD = 'P@ssw0rd';

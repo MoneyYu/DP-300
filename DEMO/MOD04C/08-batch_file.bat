@@ -11,3 +11,5 @@ pause
 start sqlcmd -S . -U DevelopmentUser -P Password -i "07-sql_script_to_keep_cpu_busy.sql"
 
 pause
+
+:: Add performace counters: SQLServer: Resource Pool Stats => CPU usage % => select the pool
