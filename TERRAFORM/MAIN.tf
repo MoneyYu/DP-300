@@ -22,7 +22,7 @@ variable "randomSeed" {
 
 locals {
   group_name               = "DP300-${var.randomSeed}"
-  location                 = "southeastasia"
+  location                 = "japaneast"
   random_name              = var.randomSeed
   lab01_name               = "LAB01"
   lab01a_name              = "LAB01A"
