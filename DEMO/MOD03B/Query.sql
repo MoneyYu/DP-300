@@ -11,3 +11,7 @@ FROM Production.Product P
 GROUP BY P.Name,
          SOH.OrderDate
 ORDER BY TotalSales DESC;
+
+-----------
+
+EXEC Sales.DemoProc
