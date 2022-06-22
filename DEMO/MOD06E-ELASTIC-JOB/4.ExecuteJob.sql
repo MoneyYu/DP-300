@@ -1,4 +1,4 @@
---Connect to the job database specified when creating the job agent
+-- Connect to the job database specified when creating the job agent
 
 -- Execute the latest version of a job
 EXEC jobs.sp_start_job 'CreateTableTest';
