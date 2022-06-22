@@ -1,4 +1,5 @@
 -- Query to Keep CPU Busy for 600 Seconds
+EXECUTE AS USER = 'ReportingUser';
 DECLARE @T DATETIME,
         @F BIGINT;
 SET @T = GETDATE();
