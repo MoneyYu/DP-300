@@ -1,75 +1,58 @@
 terraform {
+  required_version = ">=0.12"
+
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 2.0"
+      version = "~>3.0"
     }
   }
 }
 
 provider "azurerm" {
-  # The "feature" block is required for AzureRM provider 2.x. 
-  # If you are using version 1.x, the "features" block is not allowed.
-  # version = "~>2.0"
   features {}
-  # Use Azure CLI to authencation
 }
 
-variable "randomSeed" {
-  type        = string
-  description = "The seed of the random name."
+variable "group_postfix" {
+  type = string
+}
+
+variable "user_name" {
+  type    = string
+  default = "demouser"
+}
+
+variable "user_passowrd" {
+  type    = string
+  default = "Azuredemo2020"
 }
 
 locals {
-  group_name               = "DP300-${var.randomSeed}"
-  location                 = "japaneast"
-  random_name              = var.randomSeed
-  lab01_name               = "LAB01"
-  lab01a_name              = "LAB01A"
-  lab01c_name              = "LAB01C"
-  lab01d_name              = "LAB01D"
-  lab01e_name              = "LAB01E"
-  lab01f_name              = "LAB01F"
-  lab02_name               = "LAB02"
-  lab03_name               = "LAB03"
-  lab04_name               = "LAB04"
-  lab05_name               = "LAB05"
-  lab06_name               = "LAB06"
-  lab07_name               = "LAB07"
-  lab08_name               = "LAB08"
-  lab09_name               = "LAB09"
-  lab10_name               = "LAB10"
-  lab10b_name              = "LAB10B"
-  lab11_name               = "LAB11"
-  lab12_name               = "LAB12"
-  lab13_name               = "LAB13"
-  lab14_name               = "LAB14"
-  lab15_name               = "LAB15"
-  lab16_name               = "LAB16"
-  lab01_name_with_postfix  = "${local.lab01_name}${local.random_name}"
-  lab01a_name_with_postfix = "${local.lab01a_name}${local.random_name}"
-  lab01c_name_with_postfix = "${local.lab01c_name}${local.random_name}"
-  lab01d_name_with_postfix = "${local.lab01d_name}${local.random_name}"
-  lab01e_name_with_postfix = "${local.lab01e_name}${local.random_name}"
-  lab01f_name_with_postfix = "${local.lab01f_name}${local.random_name}"
-  lab02_name_with_postfix  = "${local.lab02_name}${local.random_name}"
-  lab03_name_with_postfix  = "${local.lab03_name}${local.random_name}"
-  lab04_name_with_postfix  = "${local.lab04_name}${local.random_name}"
-  lab05_name_with_postfix  = "${local.lab05_name}${local.random_name}"
-  lab06_name_with_postfix  = "${local.lab06_name}${local.random_name}"
-  lab07_name_with_postfix  = "${local.lab07_name}${local.random_name}"
-  lab08_name_with_postfix  = "${local.lab08_name}${local.random_name}"
-  lab09_name_with_postfix  = "${local.lab09_name}${local.random_name}"
-  lab10_name_with_postfix  = "${local.lab10_name}${local.random_name}"
-  lab10b_name_with_postfix = "${local.lab10b_name}${local.random_name}"
-  lab11_name_with_postfix  = "${local.lab11_name}${local.random_name}"
-  lab12_name_with_postfix  = "${local.lab12_name}${local.random_name}"
-  lab13_name_with_postfix  = "${local.lab13_name}${local.random_name}"
-  lab14_name_with_postfix  = "${local.lab14_name}${local.random_name}"
-  lab15_name_with_postfix  = "${local.lab15_name}${local.random_name}"
-  lab16_name_with_postfix  = "${local.lab16_name}${local.random_name}"
-  user_name                = "demouser"
-  user_passowrd            = "Azuredemo2020"
+  group_name  = "DP300-${var.group_postfix}"
+  location    = "japaneast"
+  random_str  = "ose"
+  lab01_name  = "lab01"
+  lab01a_name = "lab01a"
+  lab01c_name = "lab01c"
+  lab01d_name = "lab01d"
+  lab01e_name = "lab01e"
+  lab01f_name = "lab01f"
+  lab02_name  = "lab02"
+  lab03_name  = "lab03"
+  lab04_name  = "lab04"
+  lab05_name  = "lab05"
+  lab06_name  = "lab06"
+  lab07_name  = "lab07"
+  lab08_name  = "lab08"
+  lab09_name  = "lab09"
+  lab10_name  = "lab10"
+  lab10b_name = "lab10b"
+  lab11_name  = "lab11"
+  lab12_name  = "lab12"
+  lab13_name  = "lab13"
+  lab14_name  = "lab14"
+  lab15_name  = "lab15"
+  lab16_name  = "lab16"
 }
 
 data "http" "myip" {
@@ -81,16 +64,17 @@ data "azurerm_client_config" "current" {}
 resource "random_string" "rid" {
   length  = 3
   special = false
-  number  = false
+  numeric = false
+  upper   = false
 }
 
-resource "random_integer" "ri" {
-  min = 10000
-  max = 99999
+resource "random_integer" "rint" {
+  min = 100
+  max = 999
 }
 
 # Create a resource group if it doesn't exist
-resource "azurerm_resource_group" "group" {
+resource "azurerm_resource_group" "dp300" {
   name     = local.group_name
   location = local.location
 

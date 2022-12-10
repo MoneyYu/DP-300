@@ -1,8 +1,8 @@
 ## MOD-01-F-POSTGRESQL
 resource "azurerm_postgresql_server" "lab01f" {
   name                = lower(local.lab01f_name_with_postfix)
-  location            = azurerm_resource_group.group.location
-  resource_group_name = azurerm_resource_group.group.name
+  location            = azurerm_resource_group.dp300.location
+  resource_group_name = azurerm_resource_group.dp300.name
 
   sku_name = "B_Gen5_2"
 
@@ -19,7 +19,7 @@ resource "azurerm_postgresql_server" "lab01f" {
 
 resource "azurerm_postgresql_database" "lab01f" {
   name                = lower(local.lab01f_name_with_postfix)
-  resource_group_name = azurerm_resource_group.group.name
+  resource_group_name = azurerm_resource_group.dp300.name
   server_name         = azurerm_postgresql_server.lab01f.name
   charset             = "UTF8"
   collation           = "English_United States.1252"
@@ -27,7 +27,7 @@ resource "azurerm_postgresql_database" "lab01f" {
 
 resource "azurerm_postgresql_firewall_rule" "lab01f01" {
   name                = "Rule01"
-  resource_group_name = azurerm_resource_group.group.name
+  resource_group_name = azurerm_resource_group.dp300.name
   server_name         = azurerm_postgresql_server.lab01f.name
   start_ip_address    = "114.32.33.212"
   end_ip_address      = "114.32.33.212"
@@ -35,7 +35,7 @@ resource "azurerm_postgresql_firewall_rule" "lab01f01" {
 
 resource "azurerm_postgresql_firewall_rule" "lab01f02" {
   name                = "Rule02"
-  resource_group_name = azurerm_resource_group.group.name
+  resource_group_name = azurerm_resource_group.dp300.name
   server_name         = azurerm_postgresql_server.lab01f.name
   start_ip_address    = "0.0.0.0"
   end_ip_address      = "0.0.0.0"

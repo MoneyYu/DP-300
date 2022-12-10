@@ -1,8 +1,8 @@
 ## MOD-01-C-SQL-DATABASE-ELASTIC-POOL
 resource "azurerm_mssql_elasticpool" "lab01d" {
   name                = lower(replace(local.lab01d_name_with_postfix, "-", ""))
-  resource_group_name = azurerm_resource_group.group.name
-  location            = azurerm_resource_group.group.location
+  resource_group_name = azurerm_resource_group.dp300.name
+  location            = azurerm_resource_group.dp300.location
   server_name         = azurerm_sql_server.lab01.name
   license_type        = "BasePrice"
   max_size_gb         = 100
