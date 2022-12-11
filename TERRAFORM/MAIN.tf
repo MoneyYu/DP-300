@@ -33,6 +33,7 @@ locals {
   random_str  = "ose"
   lab01_name  = "lab01"
   lab01a_name = "lab01a"
+  lab01b_name = "lab01b"
   lab01c_name = "lab01c"
   lab01d_name = "lab01d"
   lab01e_name = "lab01e"
