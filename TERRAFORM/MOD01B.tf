@@ -3,6 +3,10 @@ resource "azurerm_network_security_group" "lab01b" {
   name                = "${local.lab01b_name}-nsg-${local.random_str}"
   location            = azurerm_resource_group.dp300.location
   resource_group_name = azurerm_resource_group.dp300.name
+
+  tags = {
+    environment = local.group_name
+  }
 }
 
 
@@ -28,7 +32,7 @@ resource "azurerm_network_security_rule" "allow_misubnet_inbound" {
   protocol                    = "*"
   source_port_range           = "*"
   destination_port_range      = "*"
-  source_address_prefix       = "10.0.0.0/24"
+  source_address_prefix       = "10.2.1.0/24"
   destination_address_prefix  = "*"
   resource_group_name         = azurerm_resource_group.dp300.name
   network_security_group_name = azurerm_network_security_group.lab01b.name
@@ -98,7 +102,7 @@ resource "azurerm_network_security_rule" "allow_misubnet_outbound" {
   protocol                    = "*"
   source_port_range           = "*"
   destination_port_range      = "*"
-  source_address_prefix       = "10.0.0.0/24"
+  source_address_prefix       = "10.2.1.0/24"
   destination_address_prefix  = "*"
   resource_group_name         = azurerm_resource_group.dp300.name
   network_security_group_name = azurerm_network_security_group.lab01b.name
@@ -121,15 +125,19 @@ resource "azurerm_network_security_rule" "deny_all_outbound" {
 resource "azurerm_virtual_network" "lab01b" {
   name                = "${local.lab01b_name}-vnet-${local.random_str}"
   resource_group_name = azurerm_resource_group.dp300.name
-  address_space       = ["10.0.0.0/16"]
+  address_space       = ["10.2.0.0/16"]
   location            = azurerm_resource_group.dp300.location
+
+  tags = {
+    environment = local.group_name
+  }
 }
 
 resource "azurerm_subnet" "lab01b" {
   name                 = "subnet-mi"
   resource_group_name  = azurerm_resource_group.dp300.name
   virtual_network_name = azurerm_virtual_network.lab01b.name
-  address_prefixes     = ["10.0.0.0/24"]
+  address_prefixes     = ["10.2.1.0/24"]
 
   delegation {
     name = "managedinstancedelegation"
@@ -154,6 +162,10 @@ resource "azurerm_route_table" "lab01b" {
   depends_on = [
     azurerm_subnet.lab01b,
   ]
+
+  tags = {
+    environment = local.group_name
+  }
 }
 
 resource "azurerm_subnet_route_table_association" "lab01b" {
@@ -179,4 +191,8 @@ resource "azurerm_mssql_managed_instance" "lab01b" {
     azurerm_subnet_network_security_group_association.lab01b,
     azurerm_subnet_route_table_association.lab01b,
   ]
+
+  tags = {
+    environment = local.group_name
+  }
 }

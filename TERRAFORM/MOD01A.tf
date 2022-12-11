@@ -1,7 +1,7 @@
 ## MOD-01-A-MSSQL-VM
 resource "azurerm_virtual_network" "lab01a" {
   name                = "${local.lab01a_name}-vnet-${local.random_str}"
-  address_space       = ["10.0.0.0/16"]
+  address_space       = ["10.1.0.0/16"]
   location            = azurerm_resource_group.dp300.location
   resource_group_name = azurerm_resource_group.dp300.name
 
@@ -14,7 +14,7 @@ resource "azurerm_subnet" "lab01a" {
   name                 = "default"
   resource_group_name  = azurerm_resource_group.dp300.name
   virtual_network_name = azurerm_virtual_network.lab01a.name
-  address_prefixes     = ["10.0.1.0/24"]
+  address_prefixes     = ["10.1.1.0/24"]
 }
 
 resource "azurerm_public_ip" "lab01a" {
@@ -41,11 +41,11 @@ resource "azurerm_network_security_group" "lab01a" {
 
 resource "azurerm_network_security_rule" "lab01a01" {
   name                        = "RDP"
-  priority                    = 100
+  priority                    = 110
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
-  source_port_range           = "1433"
+  source_port_range           = "*"
   source_address_prefix       = chomp(data.http.myip.response_body)
   destination_port_range      = "3389"
   destination_address_prefix  = "*"
@@ -55,11 +55,11 @@ resource "azurerm_network_security_rule" "lab01a01" {
 
 resource "azurerm_network_security_rule" "lab01a02" {
   name                        = "MSSQL"
-  priority                    = 110
+  priority                    = 120
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
-  source_port_range           = "1433"
+  source_port_range           = "*"
   source_address_prefix       = chomp(data.http.myip.response_body)
   destination_port_range      = "1433"
   destination_address_prefix  = "*"
