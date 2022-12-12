@@ -217,19 +217,3 @@ resource "azurerm_mssql_managed_instance" "lab01b" {
     environment = local.group_name
   }
 }
-
-resource "azuread_directory_role" "lab01b" {
-  display_name = "Directory Readers"
-}
-
-resource "azuread_directory_role_member" "lab01b" {
-  role_object_id   = azuread_directory_role.lab01b.object_id
-  member_object_id = azurerm_mssql_managed_instance.lab01b.identity.0.principal_id
-}
-
-resource "azurerm_mssql_managed_instance_active_directory_administrator" "example" {
-  managed_instance_id = azurerm_mssql_managed_instance.lab01b.id
-  login_username      = "Money Yu"
-  object_id           = local.admin_oid
-  tenant_id           = data.azurerm_client_config.current.tenant_id
-}
