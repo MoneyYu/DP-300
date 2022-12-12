@@ -8,8 +8,8 @@ resource "azurerm_mssql_server" "lab01" {
   administrator_login_password = var.user_passowrd
 
   azuread_administrator {
-    login_username = "AzureAD Admin"
-    object_id      = "b8e50bc5-6559-4643-a003-2807a8d707f7"
+    login_username = "Money Yu"
+    object_id      = local.admin_oid
   }
 
   tags = {

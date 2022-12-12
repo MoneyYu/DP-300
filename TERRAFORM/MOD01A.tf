@@ -203,4 +203,8 @@ resource "azurerm_mssql_virtual_machine" "lab01a" {
       luns              = []
     }
   }
+
+  tags = {
+    environment = local.group_name
+  }
 }

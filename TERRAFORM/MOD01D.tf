@@ -1,10 +1,9 @@
-## MOD-01-C-SQL-DATABASE-ELASTIC-POOL
+## MOD-01-D-SQL-DATABASE-ELASTIC-POOL
 resource "azurerm_mssql_elasticpool" "lab01d" {
-  name                = "${local.lab01c_name}-elasticpool-${local.random_str}"
+  name                = "${local.lab01d_name}-elasticpool-${local.random_str}"
   resource_group_name = azurerm_resource_group.dp300.name
   location            = azurerm_resource_group.dp300.location
   server_name         = azurerm_mssql_server.lab01.name
-  license_type        = "BasePrice"
   max_size_gb         = 100
 
   sku {
@@ -24,7 +23,7 @@ resource "azurerm_mssql_elasticpool" "lab01d" {
 }
 
 resource "azurerm_mssql_database" "lab01d01" {
-  name            = "${local.lab01c_name}-elastic01-db-${local.random_str}"
+  name            = "${local.lab01d_name}-elastic01-db-${local.random_str}"
   server_id       = azurerm_mssql_server.lab01.id
   sku_name        = "ElasticPool"
   elastic_pool_id = azurerm_mssql_elasticpool.lab01d.id
@@ -35,7 +34,7 @@ resource "azurerm_mssql_database" "lab01d01" {
 }
 
 resource "azurerm_mssql_database" "lab01d02" {
-  name            = "${local.lab01c_name}-elastic02-db-${local.random_str}"
+  name            = "${local.lab01d_name}-elastic02-db-${local.random_str}"
   server_id       = azurerm_mssql_server.lab01.id
   sku_name        = "ElasticPool"
   elastic_pool_id = azurerm_mssql_elasticpool.lab01d.id

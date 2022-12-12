@@ -30,7 +30,8 @@ variable "user_passowrd" {
 locals {
   group_name  = "DP300-${var.group_postfix}"
   location    = "japaneast"
-  random_str  = "ose"
+  random_str  = "ksh"
+  admin_oid   = "b8e50bc5-6559-4643-a003-2807a8d707f7"
   lab01_name  = "lab01"
   lab01a_name = "lab01a"
   lab01b_name = "lab01b"
@@ -38,22 +39,14 @@ locals {
   lab01d_name = "lab01d"
   lab01e_name = "lab01e"
   lab01f_name = "lab01f"
+  lab01g_name = "lab01g"
+  lab01h_name = "lab01h"
   lab02_name  = "lab02"
   lab03_name  = "lab03"
   lab04_name  = "lab04"
   lab05_name  = "lab05"
   lab06_name  = "lab06"
   lab07_name  = "lab07"
-  lab08_name  = "lab08"
-  lab09_name  = "lab09"
-  lab10_name  = "lab10"
-  lab10b_name = "lab10b"
-  lab11_name  = "lab11"
-  lab12_name  = "lab12"
-  lab13_name  = "lab13"
-  lab14_name  = "lab14"
-  lab15_name  = "lab15"
-  lab16_name  = "lab16"
 }
 
 data "http" "myip" {
@@ -69,10 +62,10 @@ resource "random_string" "rid" {
   upper   = false
 }
 
-resource "random_integer" "rint" {
-  min = 100
-  max = 999
-}
+# resource "random_integer" "rint" {
+#   min = 100
+#   max = 999
+# }
 
 # Create a resource group if it doesn't exist
 resource "azurerm_resource_group" "dp300" {

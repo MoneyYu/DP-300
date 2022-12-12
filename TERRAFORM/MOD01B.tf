@@ -24,6 +24,20 @@ resource "azurerm_network_security_rule" "allow_management_inbound" {
   network_security_group_name = azurerm_network_security_group.lab01b.name
 }
 
+resource "azurerm_network_security_rule" "allow_mssql_inbound" {
+  name                        = "allow_mssql_inbound"
+  priority                    = 120
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_ranges     = ["1433", "3342"]
+  source_address_prefix       = chomp(data.http.myip.response_body)
+  destination_address_prefix  = "*"
+  resource_group_name         = azurerm_resource_group.dp300.name
+  network_security_group_name = azurerm_network_security_group.lab01b.name
+}
+
 resource "azurerm_network_security_rule" "allow_misubnet_inbound" {
   name                        = "allow_misubnet_inbound"
   priority                    = 200
@@ -183,9 +197,16 @@ resource "azurerm_mssql_managed_instance" "lab01b" {
   storage_size_in_gb = 32
   subnet_id          = azurerm_subnet.lab01b.id
   vcores             = 4
+  collation          = "SQL_Latin1_General_CP1_CI_AS"
 
   administrator_login          = var.user_name
   administrator_login_password = var.user_passowrd
+
+  public_data_endpoint_enabled = true
+
+  identity {
+    type = "SystemAssigned"
+  }
 
   depends_on = [
     azurerm_subnet_network_security_group_association.lab01b,
@@ -195,4 +216,20 @@ resource "azurerm_mssql_managed_instance" "lab01b" {
   tags = {
     environment = local.group_name
   }
+}
+
+resource "azuread_directory_role" "lab01b" {
+  display_name = "Directory Readers"
+}
+
+resource "azuread_directory_role_member" "lab01b" {
+  role_object_id   = azuread_directory_role.lab01b.object_id
+  member_object_id = azurerm_mssql_managed_instance.lab01b.identity.0.principal_id
+}
+
+resource "azurerm_mssql_managed_instance_active_directory_administrator" "example" {
+  managed_instance_id = azurerm_mssql_managed_instance.lab01b.id
+  login_username      = "Money Yu"
+  object_id           = local.admin_oid
+  tenant_id           = data.azurerm_client_config.current.tenant_id
 }
