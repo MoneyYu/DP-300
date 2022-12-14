@@ -3,7 +3,7 @@ EXEC dbo.proc_1 0;
 GO 20
 
 -- use Top Resource Consuming Queries
-
+-- Change the vertical axis to use "exec count" and change the "Metric" drop down from "Duration" to "Logical Reads":
 
 ------- Test 2 - Testing with a Non Clustered Index
 CREATE NONCLUSTERED INDEX NCI_1 ON dbo.db_store (c3);
