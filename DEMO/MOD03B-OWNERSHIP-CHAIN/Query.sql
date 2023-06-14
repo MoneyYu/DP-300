@@ -15,3 +15,6 @@ ORDER BY TotalSales DESC;
 -----------
 
 EXEC Sales.DemoProc
+
+---
+todo check azre sql db
