@@ -89,6 +89,11 @@ resource "azurerm_network_interface_security_group_association" "lab01a" {
   network_security_group_id = azurerm_network_security_group.lab01a.id
 }
 
+resource "azurerm_subnet_network_security_group_association" "lab01a" {
+  subnet_id                 = azurerm_subnet.lab01a.id
+  network_security_group_id = azurerm_network_security_group.lab01a.id
+}
+
 resource "azurerm_windows_virtual_machine" "lab01a" {
   name                  = "${local.lab01a_name}-sqlvm-${local.random_str}"
   location              = azurerm_resource_group.dp300.location
