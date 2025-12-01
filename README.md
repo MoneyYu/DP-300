@@ -6,22 +6,20 @@ GA: UA-117096964-1
 
 # DP-300 Reference
 
-## Contact
-[Money.Yu@microsoft.com](mailto:Money.Yu@microsoft.com)
-LinkedIn: [@abc12207](https://www.linkedin.com/in/abc12207/)
+## Course
+:::success
+Date: 20251202
+Course ID: 89887
+:::
 
-> Date: 20231113
-> Course ID: 54801
-> 
-> Course Survey: [https://aka.ms/dp300survey](https://aka.ms/dp300survey)
-
+:::info
+Course Survey: [https://aka.ms/dp300survey](https://aka.ms/dp300survey)
+:::
 
 ## Course Materials
-[Course DP-300 English version](https://aka.ms/CourseDP-300)
-
-[Course DP-300 简体中文版本](https://aka.ms/learn/dp300cn)
-
-[Course DP-300 正體中文版本](https://aka.ms/learn/dp300tw)
+[Course DP-300 English version](https://learn.microsoft.com/en-us/training/courses/dp-300t00#study-guide)
+[Course DP-300 简体中文版本](https://learn.microsoft.com/zh-cn/training/courses/dp-300t00#study-guide)
+[Course DP-300 正體中文版本](https://learn.microsoft.com/zh-tw/training/courses/dp-300t00#study-guide)
 
 ## Infos
 [ESI Support](https://aka.ms/esisupport)
@@ -30,26 +28,9 @@ LinkedIn: [@abc12207](https://www.linkedin.com/in/abc12207/)
 ## Lab
 ### Skillable lab system
 [ESI Labs](https://aka.ms/esilab)
-> Training key: AF2FA2142D1D4D35
-> > Only need to redeem once
-> > Valid for 6 months
-
-Redeem Turtoial Video: https://media.yu.money/common/lods.html
-<!--Redeem Turtoial Video: https://aka.money/LabRedeemTutorial
-Redeem Turtoial Video: https://www.youtube.com/watch?v=2bkzEkRYv8I
--->
-
-### Azure (Azure Pass version)
-[Azure Pass Redeem](https://www.microsoftazurepass.com/)
-> Need to redeem Skillalbe lab first
-> Valid for 100 USD or 1 month
-> Only need to redeem once
-> In the lab, use `EastUS` as your region
-> > **Cloudslice version don't need to go to throught this process**
-
-[Redemption Process Guide - Microsoft Azure Pass](https://www.microsoftazurepass.com/Home/HowTo)
-Turtoial Video: https://media.yu.money/common/azurepass.html
-<!-- https://www.youtube.com/watch?v=4-uN1UeBG40 -->
+:::success
+Training key: 56A419D505864876
+:::
 
 ### Instruction
 [DP-300 EN Labs](https://aka.ms/dp300labs)
@@ -66,7 +47,7 @@ Turtoial Video: https://media.yu.money/common/azurepass.html
 ## Course Info
 ![Courses](https://mdcontent.yu.money/contents/upload_f13f26cb42ca55528e3903a82440a750.png)
 
-![Exam](https://mdcontent.yu.money/contents/upload_107fe1447fae630aaf590a76c5487b54.png)
+![Exam](https://mdcontent.yu.money/contents/025125025596760cb35cd7202.png)
 
 ## M01 - Introduction to Azure Database Administration <br/> M02 - Plan and implement data platform resources
 ### SQL Server
@@ -116,6 +97,8 @@ Turtoial Video: https://media.yu.money/common/azurepass.html
 [Azure SQL vCore overview](https://docs.microsoft.com/en-us/azure/azure-sql/database/service-tiers-vcore)
 
 [vCore vs DTU purchasing models](https://docs.microsoft.com/en-us/azure/azure-sql/database/purchasing-models)
+
+[What are the specific rights of the Azure Hybrid Benefit for SQL Server?](https://learn.microsoft.com/en-us/azure/azure-sql/azure-hybrid-benefit?view=azuresql&tabs=azure-portal#what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server)
 
 [Resource limits for single databases using the DTU purchasing model](https://learn.microsoft.com/en-us/azure/azure-sql/database/resource-limits-dtu-single-databases?view=azuresql)
 
@@ -227,6 +210,8 @@ Turtoial Video: https://media.yu.money/common/azurepass.html
 
 [Microsoft Defender for SQL](https://learn.microsoft.com/en-us/azure/azure-sql/database/azure-defender-for-sql?view=azuresql)
 
+[SQL information protection policy in Microsoft Defender for Cloud](https://learn.microsoft.com/en-us/azure/defender-for-cloud/sql-information-protection-policy?tabs=sqlip-tenant)
+
 [SQL Ledger overview](https://learn.microsoft.com/en-us/sql/relational-databases/security/ledger/ledger-overview?view=sql-server-ver16)
 
 [Microsoft Purview](https://learn.microsoft.com/en-us/azure/purview/overview)
@@ -254,6 +239,8 @@ Turtoial Video: https://media.yu.money/common/azurepass.html
 
 ### Extended Events
 [SQL Server Extended Events overview](https://docs.microsoft.com/en-us/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15)
+
+[Extended Event categorization](https://learn.microsoft.com/en-us/sql/relational-databases/extended-events/sql-server-extended-events-packages?view=sql-server-ver15#event-categorization)
 
 [Azure SQL Database Extended Events](https://docs.microsoft.com/en-us/azure/azure-sql/database/xevent-db-diff-from-svr)
 
@@ -363,6 +350,8 @@ Turtoial Video: https://media.yu.money/common/azurepass.html
 
 [Export to a BACPAC file - Azure SQL Database and Azure SQL Managed Instance](https://learn.microsoft.com/en-us/azure/azure-sql/database/database-export?view=azuresql)
 
+[Import or export an Azure SQL Database using private link](https://docs.microsoft.com/en-us/azure/azure-sql/database/database-import-export-private-link)
+
 ### Automation
 [Automate management tasks in Azure SQL](https://learn.microsoft.com/en-us/azure/azure-sql/database/job-automation-overview?view=azuresql)
 
@@ -379,6 +368,8 @@ Turtoial Video: https://media.yu.money/common/azurepass.html
 [Azure SQL Elastic Job Agent](https://learn.microsoft.com/en-us/azure/azure-sql/database/elastic-jobs-overview?view=azuresql)
 
 [Use Transact-SQL (T-SQL) to create and manage Elastic Database Jobs (preview)](https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-jobs-tsql-create-manage?view=azuresql)
+
+[Azure SQL Elastic Job stored procedures](https://learn.microsoft.com/en-us/azure/azure-sql/database/elastic-jobs-tsql-create-manage?view=azuresql#job-stored-procedures)
 
 #### Others
 [Microsoft Service Trust Portal](https://servicetrust.microsoft.com/)
@@ -447,16 +438,19 @@ SVG download: [Whiteboard](https://mttcontent.yu.money/dp300/Whiteboard.svg)
 [49752-DP-300.pdf](https://mttcontent.yu.money/dp300/notes/49752-DP-300.pdf)
 [49467-DP-300.pdf](https://mttcontent.yu.money/dp300/notes/49467-DP-300.pdf)
 [53052-DP-300.pdf](https://mttcontent.yu.money/dp300/notes/53052-DP-300.pdf)
+[55355-DP-300.pdf](https://mttcontent.yu.money/dp300/notes/55355-DP-300.pdf)
 
 ## Exam
 [Learner Experience Portal](http://esi.microsoft.com/)
 [DP-300](https://docs.microsoft.com/en-us/learn/certifications/exams/dp-300)
 [Claiming your exam voucher - Video](https://aka.ms/TrainingDayExamDiscount )
 <!--https://aka.ms/esi-claim-voucher-->
-[Exam duration and question types](https://docs.microsoft.com/en-us/learn/certifications/exam-duration-question-types)
+[Exam duration and question types](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience)
 [Practice Assessment for Exam DP-300: Administering Microsoft Azure SQL Solutions](https://learn.microsoft.com/en-us/credentials/certifications/exams/dp-300/practice/assessment?assessment-type=practice&assessmentId=58)
 [DP-300 Study Guide](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4q3yZ)
 [DP-300 Exam Prep videos](https://learn.microsoft.com/en-us/shows/exam-readiness-zone/preparing-for-dp-300-plan-and-implement-data-platform-resources-1-of-5)
+[DP-300 free practice assessment](https://learn.microsoft.com/en-us/credentials/certifications/exams/dp-300/practice/assessment?assessment-type=practice&assessmentId=58)
+
 [Unscheduled breaks now available in most exams without requesting in advance](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/unscheduled-breaks-now-available-in-most-exams-without/ba-p/3287005)
 [Exam Sandbox](https://aka.ms/examdemo)
 [Microsoft Exam FAQ](https://docs.microsoft.com/zh-cn/learn/certifications/online-exams)
@@ -501,3 +495,8 @@ SVG: [exam.svg](https://mttcontent.yu.money/common/exam.svg)
 [Azure for GCP Professionals](https://docs.microsoft.com/en-us/azure/architecture/gcp-professional/)
 
 [Azure for AWS Professionals](https://docs.microsoft.com/en-us/azure/architecture/aws-professional/)
+
+## Contact
+- Money Yu
+    - Mail: [Money.Yu@microsoft.com](mailto:Money.Yu@microsoft.com)
+    - LinkedIn: [@abc12207](https://www.linkedin.com/in/abc12207/)
