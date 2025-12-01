@@ -5,9 +5,7 @@ resource "azurerm_virtual_network" "lab01h" {
   location            = azurerm_resource_group.dp300.location
   resource_group_name = azurerm_resource_group.dp300.name
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_subnet" "lab01h" {
@@ -24,9 +22,7 @@ resource "azurerm_public_ip" "lab01h" {
   allocation_method   = "Static"
   domain_name_label   = "${local.lab01h_name}-pip-${local.random_str}"
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_network_security_group" "lab01h" {
@@ -34,9 +30,7 @@ resource "azurerm_network_security_group" "lab01h" {
   location            = azurerm_resource_group.dp300.location
   resource_group_name = azurerm_resource_group.dp300.name
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_network_security_rule" "lab01h01" {
@@ -79,9 +73,7 @@ resource "azurerm_network_interface" "lab01h" {
     public_ip_address_id          = azurerm_public_ip.lab01h.id
   }
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_network_interface_security_group_association" "lab01h" {
@@ -122,9 +114,7 @@ resource "azurerm_windows_virtual_machine" "lab01h" {
   patch_mode               = "AutomaticByOS"
   timezone                 = "Taipei Standard Time"
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_managed_disk" "lab01h_datadisk" {
@@ -135,9 +125,7 @@ resource "azurerm_managed_disk" "lab01h_datadisk" {
   create_option        = "Empty"
   disk_size_gb         = 256
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_virtual_machine_data_disk_attachment" "lab01h_datadisk_attach" {
@@ -156,9 +144,7 @@ resource "azurerm_managed_disk" "lab01h_logdisk" {
   create_option        = "Empty"
   disk_size_gb         = 128
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_virtual_machine_data_disk_attachment" "lab01h_logdisk_attach" {
@@ -209,7 +195,5 @@ resource "azurerm_mssql_virtual_machine" "lab01h" {
     }
   }
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }

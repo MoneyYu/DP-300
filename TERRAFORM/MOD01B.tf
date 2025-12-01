@@ -4,9 +4,7 @@ resource "azurerm_network_security_group" "lab01b" {
   location            = azurerm_resource_group.dp300.location
   resource_group_name = azurerm_resource_group.dp300.name
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 
@@ -142,9 +140,7 @@ resource "azurerm_virtual_network" "lab01b" {
   address_space       = ["10.2.0.0/16"]
   location            = azurerm_resource_group.dp300.location
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_subnet" "lab01b" {
@@ -169,17 +165,15 @@ resource "azurerm_subnet_network_security_group_association" "lab01b" {
 }
 
 resource "azurerm_route_table" "lab01b" {
-  name                          = "${local.lab01b_name}-route-${local.random_str}"
-  location                      = azurerm_resource_group.dp300.location
-  resource_group_name           = azurerm_resource_group.dp300.name
-  disable_bgp_route_propagation = false
+  name                        = "${local.lab01b_name}-route-${local.random_str}"
+  location                    = azurerm_resource_group.dp300.location
+  resource_group_name         = azurerm_resource_group.dp300.name
+  bgp_route_propagation_enabled = true
   depends_on = [
     azurerm_subnet.lab01b,
   ]
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_subnet_route_table_association" "lab01b" {
@@ -213,7 +207,5 @@ resource "azurerm_mssql_managed_instance" "lab01b" {
     azurerm_subnet_route_table_association.lab01b,
   ]
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }

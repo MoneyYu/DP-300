@@ -3,12 +3,12 @@ resource "azurerm_mssql_database" "lab01e" {
   name         = "${local.lab01e_name}-hyperscale-db-${local.random_str}"
   server_id    = azurerm_mssql_server.lab01.id
   collation    = "SQL_Latin1_General_CP1_CI_AS"
-  sku_name     = "HS_Gen4_1"
+  sku_name     = "HS_Gen5_2"
   license_type = "BasePrice"
+  max_size_gb  = 32
+  read_scale   = false
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_mssql_database_extended_auditing_policy" "lab01e" {

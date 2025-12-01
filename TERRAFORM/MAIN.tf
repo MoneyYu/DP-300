@@ -30,7 +30,7 @@ variable "user_passowrd" {
 locals {
   group_name  = "DP300-${var.group_postfix}"
   location    = "japaneast"
-  random_str  = "ksh"
+  random_str  = "tue"
   admin_oid   = "b8e50bc5-6559-4643-a003-2807a8d707f7"
   lab01_name  = "lab01"
   lab01a_name = "lab01a"
@@ -47,6 +47,11 @@ locals {
   lab05_name  = "lab05"
   lab06_name  = "lab06"
   lab07_name  = "lab07"
+
+  default_tags = {
+    environment = local.group_name
+    SecurityControl = "Ignore"
+  }
 }
 
 data "http" "myip" {
@@ -72,7 +77,5 @@ resource "azurerm_resource_group" "dp300" {
   name     = local.group_name
   location = local.location
 
-  tags = {
-    environment = local.group_name
-  }
+    tags = local.default_tags
 }

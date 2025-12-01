@@ -24,9 +24,7 @@ resource "azurerm_public_ip" "lab01a" {
   allocation_method   = "Static"
   domain_name_label   = "${local.lab01a_name}-pip-${local.random_str}"
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_network_security_group" "lab01a" {
@@ -79,9 +77,7 @@ resource "azurerm_network_interface" "lab01a" {
     public_ip_address_id          = azurerm_public_ip.lab01a.id
   }
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_network_interface_security_group_association" "lab01a" {
@@ -122,9 +118,7 @@ resource "azurerm_windows_virtual_machine" "lab01a" {
   patch_mode               = "AutomaticByOS"
   timezone                 = "Taipei Standard Time"
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_managed_disk" "lab01a_datadisk" {
@@ -135,9 +129,7 @@ resource "azurerm_managed_disk" "lab01a_datadisk" {
   create_option        = "Empty"
   disk_size_gb         = 256
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_virtual_machine_data_disk_attachment" "lab01a_datadisk_attach" {
@@ -156,9 +148,7 @@ resource "azurerm_managed_disk" "lab01a_logdisk" {
   create_option        = "Empty"
   disk_size_gb         = 128
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_virtual_machine_data_disk_attachment" "lab01a_logdisk_attach" {
@@ -209,7 +199,5 @@ resource "azurerm_mssql_virtual_machine" "lab01a" {
     }
   }
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }

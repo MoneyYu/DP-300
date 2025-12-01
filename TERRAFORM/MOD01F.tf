@@ -5,12 +5,12 @@ resource "azurerm_postgresql_server" "lab01f" {
   resource_group_name = azurerm_resource_group.dp300.name
 
   sku_name   = "B_Gen5_1"
-  storage_mb = 8192
+  storage_mb = 5120
   version    = "11"
 
   backup_retention_days        = 7
   geo_redundant_backup_enabled = false
-  auto_grow_enabled            = true
+  auto_grow_enabled            = false
 
   administrator_login          = var.user_name
   administrator_login_password = var.user_passowrd
@@ -19,9 +19,7 @@ resource "azurerm_postgresql_server" "lab01f" {
   ssl_enforcement_enabled          = true
   ssl_minimal_tls_version_enforced = "TLS1_2"
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_postgresql_database" "lab01f" {

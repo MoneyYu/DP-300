@@ -17,9 +17,7 @@ resource "azurerm_mssql_elasticpool" "lab01d" {
     max_capacity = 100
   }
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_mssql_database" "lab01d01" {
@@ -28,9 +26,7 @@ resource "azurerm_mssql_database" "lab01d01" {
   sku_name        = "ElasticPool"
   elastic_pool_id = azurerm_mssql_elasticpool.lab01d.id
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_mssql_database" "lab01d02" {
@@ -39,9 +35,7 @@ resource "azurerm_mssql_database" "lab01d02" {
   sku_name        = "ElasticPool"
   elastic_pool_id = azurerm_mssql_elasticpool.lab01d.id
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_mssql_database_extended_auditing_policy" "lab01d01" {

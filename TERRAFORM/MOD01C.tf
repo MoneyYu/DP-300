@@ -6,9 +6,7 @@ resource "azurerm_mssql_database" "lab01c" {
   sku_name     = "S1"
   license_type = "BasePrice"
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_mssql_database_extended_auditing_policy" "lab01c" {
