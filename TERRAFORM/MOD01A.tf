@@ -115,6 +115,7 @@ resource "azurerm_windows_virtual_machine" "lab01a" {
 
   provision_vm_agent       = true
   enable_automatic_updates = true
+  vm_agent_platform_updates_enabled = true
   patch_mode               = "AutomaticByOS"
   timezone                 = "Taipei Standard Time"
 
