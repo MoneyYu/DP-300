@@ -141,8 +141,6 @@ Training key: 56A419D505864876
 
 [Choose the right PostgreSQL server option in Azure](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/overview-postgres-choose-server-options)
 
-[Choose the right MariaDB Server option in Azure](https://learn.microsoft.com/en-us/azure/mariadb/select-right-deployment-type)
-
 [Pricing tiers in Azure Database for PostgreSQL - Single Server](https://learn.microsoft.com/en-us/azure/postgresql/single-server/concepts-pricing-tiers)
 
 ### Migration
