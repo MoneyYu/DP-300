@@ -180,6 +180,17 @@ resource "azurerm_mssql_virtual_machine" "lab01a" {
     storage_account_access_key = azurerm_storage_account.lab01.primary_access_key
   }
 
+  assessment {
+    enabled         = true
+    run_immediately = true
+
+    schedule {
+      weekly_interval = 1
+      day_of_week     = "Sunday"
+      start_time      = "02:00"
+    }
+  }
+
   storage_configuration {
     disk_type             = "NEW"
     storage_workload_type = "OLTP"
