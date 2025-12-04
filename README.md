@@ -141,6 +141,8 @@ Training key: 56A419D505864876
 
 [Choose the right PostgreSQL server option in Azure](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/overview-postgres-choose-server-options)
 
+[Choose the right MariaDB Server option in Azure](https://learn.microsoft.com/en-us/azure/mariadb/select-right-deployment-type)
+
 [Pricing tiers in Azure Database for PostgreSQL - Single Server](https://learn.microsoft.com/en-us/azure/postgresql/single-server/concepts-pricing-tiers)
 
 ### Migration
@@ -192,6 +194,8 @@ Training key: 56A419D505864876
 
 [Getting started using Always Encrypted with secure enclaves](https://learn.microsoft.com/en-us/azure/azure-sql/database/always-encrypted-enclaves-getting-started?view=azuresql&tabs=azure-portal)
 
+[Example demonstrating use of Azure Key Vault provider with Always Encrypted enabled with secure enclaves](https://learn.microsoft.com/en-us/sql/connect/ado-net/sql/azure-key-vault-enclave-example?view=sql-server-ver17)
+
 [Configure Always Encrypted using SQL Server Management Studio](https://learn.microsoft.com/en-us/sql/relational-databases/security/encryption/configure-always-encrypted-using-sql-server-management-studio?redirectedfrom=MSDN&view=sql-server-ver16#param)
 
 [Dynamic Data Masking
@@ -215,8 +219,9 @@ Training key: 56A419D505864876
 [Microsoft Purview](https://learn.microsoft.com/en-us/azure/purview/overview)
 
 ## M04 - Monitor and optimize operational resources
-[SQL Server Profiler
-](https://learn.microsoft.com/en-us/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver16)
+[SQL Server Profiler](https://learn.microsoft.com/en-us/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver16)
+
+[Monitor Azure SQL workloads with database watcher (preview)](https://learn.microsoft.com/en-us/azure/azure-sql/database-watcher-overview?view=azuresql&tabs=americas#sql-monitoring-data)
 
 ### Query Store
 [Monitor performance by using the Query Store](https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15)
