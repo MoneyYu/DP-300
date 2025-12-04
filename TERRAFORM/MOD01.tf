@@ -8,13 +8,21 @@ resource "azurerm_mssql_server" "lab01" {
   administrator_login_password = var.user_passowrd
 
   azuread_administrator {
-    login_username = "Money Yu"
+    login_username = "admin@devmtt.com"
     object_id      = local.admin_oid
   }
 
   tags = {
     environment = local.group_name
   }
+}
+
+resource "azurerm_mssql_server_security_alert_policy" "lab01" {
+  resource_group_name = azurerm_resource_group.dp300.name
+  server_name         = azurerm_mssql_server.lab01.name
+  state               = "Enabled"
+
+  email_account_admins = true
 }
 
 resource "azurerm_mssql_firewall_rule" "lab0101" {

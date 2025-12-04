@@ -6,6 +6,11 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~>3.0"
     }
+
+    azapi = {
+      source  = "azure/azapi"
+      version = "~> 2.0"
+    }
   }
 }
 
@@ -31,7 +36,7 @@ locals {
   group_name  = "DP300-${var.group_postfix}"
   location    = "japaneast"
   random_str  = "tue"
-  admin_oid   = "b8e50bc5-6559-4643-a003-2807a8d707f7"
+  admin_oid   = "b3c41470-a3a7-4c05-a4aa-ff279c3b8540"
   lab01_name  = "lab01"
   lab01a_name = "lab01a"
   lab01b_name = "lab01b"
@@ -49,7 +54,7 @@ locals {
   lab07_name  = "lab07"
 
   default_tags = {
-    environment = local.group_name
+    environment     = local.group_name
     SecurityControl = "Ignore"
   }
 }
@@ -77,5 +82,5 @@ resource "azurerm_resource_group" "dp300" {
   name     = local.group_name
   location = local.location
 
-    tags = local.default_tags
+  tags = local.default_tags
 }
