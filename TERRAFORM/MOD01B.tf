@@ -1,4 +1,4 @@
-## MOD-01-CB-SQL-MI
+## MOD-01-B-SQL-MI
 resource "azurerm_network_security_group" "lab01b" {
   name                = "${local.lab01b_name}-nsg-${local.random_str}"
   location            = azurerm_resource_group.dp300.location
