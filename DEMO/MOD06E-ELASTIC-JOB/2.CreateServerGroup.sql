@@ -11,10 +11,10 @@ EXEC jobs.sp_add_target_group 'ServerGroup1';
 
 -- Include a database target member from the server target group
 EXEC [jobs].sp_add_target_group_member @target_group_name = N'ServerGroup1',
-                                       @membership_type = N'Include',
-                                       @target_type = N'SqlDatabase',
-                                       @server_name = N'demo0616dbserver.database.windows.net',
-                                       @database_name = N'AdventureWorks2019';
+@membership_type = N'Include',
+@target_type = N'SqlDatabase',
+@server_name = N'lab01-azure-sql-tue.database.windows.net',
+@database_name = N'lab01d-elastic01-db-tue';
 GO
 
 --View the recently created target group and target group members

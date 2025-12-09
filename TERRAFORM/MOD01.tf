@@ -12,9 +12,7 @@ resource "azurerm_mssql_server" "lab01" {
     object_id      = local.admin_oid
   }
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_mssql_server_security_alert_policy" "lab01" {
@@ -54,7 +52,5 @@ resource "azurerm_storage_account" "lab01" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
