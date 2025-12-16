@@ -34,6 +34,8 @@ VALUES
 GO
 
 -- Session 1  
+USE tempdb;
+GO
 SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
 
 BEGIN TRAN;
@@ -41,6 +43,8 @@ SELECT c1
 FROM t_lock WITH (HOLDLOCK, ROWLOCK);
 
 -- Session 2  
+USE tempdb;
+GO
 BEGIN TRAN;
 UPDATE t_lock
 SET c1 = 10;

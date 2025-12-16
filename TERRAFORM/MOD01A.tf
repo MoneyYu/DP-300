@@ -5,9 +5,7 @@ resource "azurerm_virtual_network" "lab01a" {
   location            = azurerm_resource_group.dp300.location
   resource_group_name = azurerm_resource_group.dp300.name
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_subnet" "lab01a" {
@@ -32,9 +30,7 @@ resource "azurerm_network_security_group" "lab01a" {
   location            = azurerm_resource_group.dp300.location
   resource_group_name = azurerm_resource_group.dp300.name
 
-  tags = {
-    environment = local.group_name
-  }
+  tags = local.default_tags
 }
 
 resource "azurerm_network_security_rule" "lab01a01" {
